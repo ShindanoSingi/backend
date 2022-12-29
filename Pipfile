@@ -13,3 +13,5 @@ django-cors-headers = "*"
 
 [requires]
 python_version = "3.10"
+
+ssh-keygen
