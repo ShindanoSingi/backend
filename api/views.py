@@ -2,12 +2,12 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from django.contrib.auth.models import User
-from .serializers import UserSerializer, ProductSerializer, ExpenseSerializer, RevenueSerializer, BodabodaSerializer, ExpenseBodabodaSerializer, RevenueBodabodaSerializer
+from .serializers import UserSerializer, ProductSerializer, ExpenseSerializer, RevenueSerializer, BodabodaSerializer, ExpenseBodabodaSerializer, RevenueBodabodaSerializer, ExpenseProductSerializer, RevenueProductSerializer, TodoSerializer
 from .models import Product, Expense, Revenue, Bodaboda, ExpenseBodaboda, RevenueBodaboda, ExpenseProduct, RevenueProduct, Todo
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
+    queryset = User.objects.all().order_by()
     serializer_class = UserSerializer
 
 
@@ -41,7 +41,21 @@ class ExpenseBodabodaViewSet(viewsets.ModelViewSet):
     queryset = ExpenseBodaboda.objects.all()
     serializer_class = ExpenseBodabodaSerializer
 
-
 class RevenueBodabodaViewSet(viewsets.ModelViewSet):
     queryset = RevenueBodaboda.objects.all()
     serializer_class = RevenueBodabodaSerializer
+
+
+class ExpenseProductViewSet(viewsets.ModelViewSet):
+    queryset = ExpenseProduct.objects.all()
+    serializer_class = RevenueProductSerializer
+
+
+class RevenueProductViewSet(viewsets.ModelViewSet):
+    queryset = RevenueProduct.objects.all()
+    serializer_class = RevenueProductSerializer
+
+
+class TodoViewSet(viewsets.ModelViewSet):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
