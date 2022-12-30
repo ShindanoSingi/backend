@@ -8,7 +8,27 @@ import datetime
 from traitlets import default
 
 
-# Create your models here.
+class Todo(models.Model):
+    todo = models.CharField(max_length=200, blank=False, null=False)
+    description = models.CharField(max_length=200, blank=True, null=True)
+    completed = models.BooleanField()
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.todo
+
+
+# Create Todo User
+class TodoUser(models.Model):
+    username = models.CharField(max_length=200, blank=False, null=False)
+    password = models.CharField(max_length=200, blank=False, null=False)
+    date_created = models.DateTimeField(auto_now_add=True)
+    todo_user = models.ForeignKey(Todo, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.username
+
+
 class Bodaboda(models.Model):
     item = models.CharField(max_length=200, blank=False, null=False)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -81,14 +101,5 @@ class Revenue(models.Model):
 
     def __str__(self):
         return self.item
-
-
-class Todo(models.Model):
-    todo = models.CharField(max_length=200, blank=False, null=False)
-    completed = models.BooleanField()
-    date_created = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.todo
 
 

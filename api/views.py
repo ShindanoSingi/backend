@@ -3,8 +3,8 @@ from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 from django.contrib.auth.models import User
-from .serializers import UserSerializer, ProductSerializer, ExpenseSerializer, RevenueSerializer, BodabodaSerializer, ExpenseBodabodaSerializer, RevenueBodabodaSerializer, ExpenseProductSerializer, RevenueProductSerializer, TodoSerializer
-from .models import Product, Expense, Revenue, Bodaboda, ExpenseBodaboda, RevenueBodaboda, ExpenseProduct, RevenueProduct, Todo
+from .serializers import UserSerializer, ProductSerializer, ExpenseSerializer, RevenueSerializer, BodabodaSerializer, ExpenseBodabodaSerializer, RevenueBodabodaSerializer, ExpenseProductSerializer, RevenueProductSerializer, TodoSerializer, TodoUserSerializer
+from .models import Product, Expense, Revenue, Bodaboda, ExpenseBodaboda, RevenueBodaboda, ExpenseProduct, RevenueProduct, Todo, TodoUser
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
 
 
@@ -266,6 +266,30 @@ class TodoDestroy(DestroyAPIView):
     queryset = Todo.objects.all()
     lookup_field = 'id'
     serializer_class = TodoSerializer
+
+# ________________________________________________________________________________________________________________
+
+# Get all todos users
+class TodoUserList(ListAPIView):
+    queryset = TodoUser.objects.all()
+    serializer_class = TodoUserSerializer
+
+# Create a todo
+class TodoUserCreate(CreateAPIView):
+    queryset = TodoUser.objects.all()
+    serializer_class = TodoUserSerializer
+
+# Update a todo
+class TodoUserUpdate(UpdateAPIView):
+    queryset = TodoUser.objects.all()
+    lookup_field = 'id'
+    serializer_class = TodoUserSerializer
+
+# Destroy a todo
+class TodoUserDestroy(DestroyAPIView):
+    queryset = TodoUser.objects.all()
+    lookup_field = 'id'
+    serializer_class = TodoUserSerializer
 
 
 

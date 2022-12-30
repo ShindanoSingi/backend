@@ -2,7 +2,7 @@ from dataclasses import fields
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
-from .models import Product, ExpenseProduct, RevenueProduct, Expense, Revenue, Bodaboda, ExpenseBodaboda, RevenueBodaboda, Todo
+from .models import Product, ExpenseProduct, RevenueProduct, Expense, Revenue, Bodaboda, ExpenseBodaboda, RevenueBodaboda, Todo, TodoUser
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -63,10 +63,16 @@ class RevenueBodabodaSerializer(serializers.ModelSerializer):
         model = RevenueBodaboda
         fields = ['id', 'item', 'price', 'date_created']
 
+
+class TodoUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TodoUser
+        fields = ['id', 'username', 'password', 'date_created']
+
 class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
-        fields = ['id', 'todo', 'completed', 'date_created']
+        fields = ['id', 'todo', 'description', 'completed', 'date_created']
 
     def add_fields(self, instance):
         data = super().add_fields(instance)

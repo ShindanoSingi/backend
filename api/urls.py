@@ -25,6 +25,11 @@ urlpatterns = [
     path('users/create/', views.UserCreate.as_view()),
     path('users/delete/<int:id>', views.UserDestroy.as_view()),
 
+    path('todoUser/', views.TodoUserList.as_view()),
+    path('todoUser/create', views.TodoUserCreate.as_view()),
+    path('todoUser/update/<int:int>', views.TodoUserUpdate.as_view()),
+    path('todoUser/delete/<int:id>', views.TodoUserDestroy.as_view()),
+
     path('products/', views.ProductList.as_view()),
     path('products/create', views.ProductCreate.as_view()),
     path('products/update/<int:int>', views.ProductUpdate.as_view()),
