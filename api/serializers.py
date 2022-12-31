@@ -72,7 +72,7 @@ class TodoUserSerializer(serializers.ModelSerializer):
 class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
-        fields = ['id', 'todo', 'description', 'completed', 'date_created']
+        fields = ['id','todo_user', 'todo', 'description', 'completed', 'date_created']
 
     def add_fields(self, instance):
         data = super().add_fields(instance)

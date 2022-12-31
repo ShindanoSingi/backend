@@ -8,7 +8,17 @@ import datetime
 from traitlets import default
 
 
+# Create Todo User
+class TodoUser(models.Model):
+    username = models.CharField(max_length=200, blank=False, null=False)
+    password = models.CharField(max_length=200, blank=False, null=False)
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.username
+
 class Todo(models.Model):
+    todo_user = models.ForeignKey(TodoUser, on_delete=models.CASCADE, null=True)
     todo = models.CharField(max_length=200, blank=False, null=False)
     description = models.CharField(max_length=200, blank=True, null=True)
     completed = models.BooleanField()
@@ -16,18 +26,6 @@ class Todo(models.Model):
 
     def __str__(self):
         return self.todo
-
-
-# Create Todo User
-class TodoUser(models.Model):
-    username = models.CharField(max_length=200, blank=False, null=False)
-    password = models.CharField(max_length=200, blank=False, null=False)
-    date_created = models.DateTimeField(auto_now_add=True)
-    todo_user = models.ForeignKey(Todo, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.username
-
 
 class Bodaboda(models.Model):
     item = models.CharField(max_length=200, blank=False, null=False)

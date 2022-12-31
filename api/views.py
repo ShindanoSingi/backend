@@ -288,7 +288,7 @@ class TodoUserUpdate(UpdateAPIView):
 # Destroy a todo
 class TodoUserDestroy(DestroyAPIView):
     queryset = TodoUser.objects.all()
-    lookup_field = 'id'
+    lookup_field = 'todo_user'
     serializer_class = TodoUserSerializer
 
 
