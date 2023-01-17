@@ -8,7 +8,7 @@ from .models import Product, ExpenseProduct, RevenueProduct, Expense, Revenue, B
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'password']
+        fields = ['id', 'username', 'password']
         extra_kwargs = {'password': {'write_only': True, 'required': True}}
 
     def create(self, validated_data):
@@ -73,8 +73,3 @@ class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
         fields = ['id','todo_user', 'todo', 'description', 'completed', 'date_created']
-
-    def add_fields(self, instance):
-        data = super().add_fields(instance)
-        data['task_completed'] = instance.task_completed()
-        return data

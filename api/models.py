@@ -17,15 +17,18 @@ class TodoUser(models.Model):
     def __str__(self):
         return self.username
 
+
 class Todo(models.Model):
-    todo_user = models.ForeignKey(TodoUser, on_delete=models.CASCADE, null=True)
+    todo_user = models.ForeignKey(
+        TodoUser, on_delete=models.CASCADE, null=True)
     todo = models.CharField(max_length=200, blank=False, null=False)
-    description = models.CharField(max_length=200, blank=True, null=True)
+    description = models.TextField(null=True)
     completed = models.BooleanField()
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.todo
+
 
 class Bodaboda(models.Model):
     item = models.CharField(max_length=200, blank=False, null=False)
@@ -65,6 +68,7 @@ class Product(models.Model):
     def __str__(self):
         return self.item
 
+
 class ExpenseProduct(models.Model):
     item = models.CharField(max_length=200, blank=False, null=False)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -99,5 +103,3 @@ class Revenue(models.Model):
 
     def __str__(self):
         return self.item
-
-
