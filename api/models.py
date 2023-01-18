@@ -60,7 +60,7 @@ class RevenueBodaboda(models.Model):
 class Product(models.Model):
     item = models.CharField(max_length=200, blank=False, null=False)
     image = models.ImageField(
-        upload_to='images/', height_field=None, width_field=None, max_length=100)
+        upload_to='images/')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     countryOfOrigin = models.CharField(max_length=200, blank=False, null=False)
     date_created = models.DateTimeField(auto_now_add=True)

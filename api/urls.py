@@ -21,6 +21,7 @@ router.register('bodaboda', BodabodaViewSet),
 router.register('revenuesbodaboda', RevenueBodabodaViewSet),
 router.register('expensesbodaboda', ExpenseBodabodaViewSet),
 
+
 urlpatterns = [
     path('', include(router.urls)),
 ]
