@@ -4,6 +4,7 @@ from rest_framework import routers
 from .viewSets import UserViewSet, ProductViewSet, ExpenseViewSet, RevenueViewSet, BodabodaViewSet, ExpenseBodabodaViewSet, RevenueBodabodaViewSet, ExpenseProductViewSet, RevenueProductViewSet, TodoViewSet, TodoUserViewSet
 
 router = routers.DefaultRouter()
+
 router.register('users', UserViewSet),
 
 router.register('todos', TodoViewSet),
