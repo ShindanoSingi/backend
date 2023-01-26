@@ -8,7 +8,7 @@ from .models import Product, ExpenseProduct, RevenueProduct, Expense, Revenue, B
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'password']
+        fields = ['id', 'username', 'email', 'password']
         extra_kwargs = {'password': {'write_only': True, 'required': True}}
 
     def create(self, validated_data):
@@ -62,7 +62,6 @@ class RevenueBodabodaSerializer(serializers.ModelSerializer):
     class Meta:
         model = RevenueBodaboda
         fields = ['id', 'item', 'price', 'date_created']
-
 
 class TodoUserSerializer(serializers.ModelSerializer):
     class Meta:
