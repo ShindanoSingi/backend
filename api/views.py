@@ -293,7 +293,7 @@ class TodoDestroy(DestroyAPIView):
 
 
 # Get all todos
-class TodoUsersList(ListAPIView):
+class TodoUserList(ListAPIView):
     queryset = TodoUser.objects.all()
     serializer_class = TodoUserSerializer
     authentication_classes = [TokenAuthentication, ]

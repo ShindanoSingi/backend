@@ -10,10 +10,10 @@ from traitlets import default
 
 # Create Todo User
 class TodoUser(models.Model):
-    username = models.CharField(max_length=200, blank=False, null=False)
+    username = models.CharField(max_length=200, blank=False, null=False, unique=True)
     password = models.CharField(max_length=200, blank=False, null=False)
     date_created = models.DateTimeField(auto_now_add=True)
-    
+
     def __str__(self):
         return self.username
 
