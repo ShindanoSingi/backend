@@ -1,12 +1,19 @@
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
+from django.contrib.auth import logout
 from rest_framework import viewsets
 from django.contrib.auth.models import User
 from .serializers import UserSerializer, ProductSerializer, ExpenseSerializer, RevenueSerializer, BodabodaSerializer, ExpenseBodabodaSerializer, RevenueBodabodaSerializer, ExpenseProductSerializer, RevenueProductSerializer, TodoSerializer, TodoUserSerializer
 from .models import Product, Expense, Revenue, Bodaboda, ExpenseBodaboda, RevenueBodaboda, ExpenseProduct, RevenueProduct, Todo, TodoUser
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
 
+
+class LogoutViewSet(viewsets.ViewSet):
+    def logout_user(self, request):
+        logout(request)
+        return
+        Response(status=status.HTTP_204_NO_CONTENT)
 
 # Get all users
 class UserList(ListAPIView):
